@@ -67,10 +67,57 @@
 }
  
 @layer base {
-  * {
-    @apply border-border;
+  *,
+  *::before,
+  *::after{
+    @apply border-border m-0 p-0;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-white box-border ;
   }
+}
+
+.header-container{
+  @apply p-8 border-b-2 border-solid;
+  @apply flex justify-around items-center;
+}
+
+.header-icons{
+  @apply flex space-x-2;
+}
+
+.header-links{
+  @apply flex justify-center items-center space-x-4;
+}
+
+.header-link{
+  @apply p-2 bg-white text-black rounded-lg hover:bg-red-500 hover:text-white transition ease-in-out delay-100;
+}
+
+.header-heading{
+  @apply flex items-end space-x-1;
+}
+
+.smash-icon{
+  /* background-color: red; */
+}
+
+.smash-icon g{
+  @apply fill-white;
+}
+
+.header-heading-h1{
+  @apply text-2xl font-light;
+}
+
+.body-container{
+  @apply flex flex-col p-8 items-center space-y-4 mt-24;
+}
+
+.body-text{
+  @apply text-4xl;
+}
+
+.btn{
+  @apply text-2xl;
 }
