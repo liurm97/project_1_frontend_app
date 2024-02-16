@@ -1,28 +1,35 @@
 import Icon from '@mdi/react';
 import { mdiThemeLightDark, mdiGithub } from '@mdi/js';
-import { SmashIcon } from './SmashIcon';
-import {Link} from "react-router-dom"
-// import { SmashIcon } from './SmashIcon';
-// import smash_icon_black_bg from "../../assets/icon_black_bg.svg"
+import {Link, NavLink, Outlet} from "react-router-dom"
 
 export const MainHeader = () =>
 {
   return(
+    <>
     <div className="header-container">
-      <div className="header-heading">
-        <SmashIcon/>
+      <NavLink to="/" className="header-heading">
+        <img className="smash-icon-landing" src={"src/assets/icon_white_bg.svg"} alt='Badminton jump shot icon' aria-label='Badminton jump shot icon'/>
         <h1 className="header-heading-h1">SmashBoard</h1>
-      </div>
+      </NavLink>
       <div className='header-links'>
-      <Link to="/about" className='header-link'>About</Link>
-      <Link to="/coffee" className='header-link'>Buy me a coffee</Link>
-      <Link to="/contact" className='header-link'>Contact</Link>
+        <NavLink className="header-link" to="/about">About</NavLink>
+        <NavLink className="header-link" to="/coffee">Coffee</NavLink>
+        <NavLink className="header-link" to="/contact">Contact</NavLink>
       </div>
       <div className='header-icons'>
-      <a href='#'><Icon path={mdiGithub} size={1} color={"#fff"} /></a>
+      <Link target='blank' to="https://github.com/liurm97/project_1_frontend_app">
+        <Icon path={mdiGithub} size={1} color={"#fff"} />
+      </Link>
       <Icon path={mdiThemeLightDark} size={1} rotate={360} color={"#fff"}/>
       </div>
     </div>
+
+    <main>
+      <Outlet context="Hi from outlet"/>
+    </main>
+    </>
+
   )
+
 }
 
