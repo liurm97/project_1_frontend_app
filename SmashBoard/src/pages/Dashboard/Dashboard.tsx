@@ -1,33 +1,47 @@
-import { DashboardBody } from "./DashboardBody";
+// import { DashboardBody } from "./DashboardBody";
 import { DashboardHeader } from "./DashboardHeader";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { PlayerData } from "@/data/types/PlayerData";
-import { useEffect } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+// import DashboardBody from "./DashboardBody";
+import { SinglesColumns, SinglesStatistics } from "./columns/SinglesColumns";
+import { DoublesColumns, DoublesStatistics } from "./columns/DoublesColumns";
+import { SinglesDataTable } from "./dataTable/SinglesDataTable";
+import { DoublesDataTable } from "./dataTable/DoublesDataTable";
+import { Button } from "@/components/ui/Button";
 
-export const Dashboard = () => {
-  const location = useLocation();
-  const [category, setCategory] = useState(location.state);
-  const [color, setColor] = useState("");
-  // const [playerData, setPlayerData] = useState<PlayerData[]>([])
+type DashboardArgument = {
+  categoryDescription: string;
+  categoryColor: string;
+  categoryType: string;
+};
 
-  useEffect(() => {
-    // console.log("Dashboard useEffect");
-    // console.log("category", category);
-    // Check Men or Women or Mixed category
-    category.indexOf("Women") == 0 ? setColor(() => "text-red-500") : undefined;
-    category.indexOf("Men") == 0 ? setColor(() => "text-blue-500") : undefined;
-    category.indexOf("Mixed") == 0
-      ? setColor(() => "text-purple-500")
-      : undefined;
-
-    // Read data from JSON
-  }, []);
+export const Dashboard = ({
+  categoryDescription,
+  categoryColor,
+  categoryType,
+}: DashboardArgument) => {
+  const navigate = useNavigate();
+  const data = useLoaderData() as SinglesStatistics[] | DoublesStatistics[];
   return (
     <>
-      <div className={"max-w-7xl p-6 mx-auto my-0 bg-red-500"}>
-        <DashboardHeader _category={category} _color={color} />
-        <DashboardBody _category={category} />
+      <div className={"max-w-7xl p-6 mx-auto my-0"}>
+        <DashboardHeader
+          _categoryDescription={categoryDescription}
+          _color={categoryColor}
+        />
+        <Button
+          variant={"ghost"}
+          className={"col-span-1 mb-4 mt-4 text-xl"}
+          onClick={() => navigate("/filter")}
+        >
+          Back
+        </Button>
+        <div className="mx-auto py-10">
+          {categoryType == "Single" ? (
+            <SinglesDataTable columns={SinglesColumns} data={data} />
+          ) : (
+            <DoublesDataTable columns={DoublesColumns} data={data} />
+          )}
+        </div>
       </div>
     </>
   );

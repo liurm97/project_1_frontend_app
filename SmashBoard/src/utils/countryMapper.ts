@@ -1,7 +1,7 @@
 export const countryMapper = (countryCode: string) => {
-  if (countryCode === "DEN") return "DEN";
+  if (countryCode === "DEN") return "DK";
   if (countryCode === "CHN") return "CN";
-  if (countryCode === "IND") return "ID";
+  if (countryCode === "INA") return "ID";
   if (countryCode === "JPN") return "JP";
   if (countryCode === "THA") return "TH";
   if (countryCode === "SGP") return "SG";
@@ -13,4 +13,9 @@ export const countryMapper = (countryCode: string) => {
   if (countryCode === "IRL") return "IE";
   if (countryCode === "GUA") return "GT";
   if (countryCode === "ISR") return "IL";
+  if (countryCode === "KOR") return "KR";
+  if (countryCode === "ESP") return "ES";
+  if (countryCode === "VIE") return "VN";
+  if (countryCode === "USA") return "US";
+  if (countryCode === "IND") return "IN";
 };

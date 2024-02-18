@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Select,
   SelectContent,
@@ -8,12 +7,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../global.css";
 import { Button } from "@/components/ui/Button";
 import { useState } from "react";
+
 export const Filter = () => {
-  const [category, setCategory] = useState("Men Single");
+  const [categoryAbbre, setCategoryAbbre] = useState("MS");
+  const [categoryType, setCategoryType] = useState("Single");
+  console.log("categoryType", categoryType);
+  const navigate = useNavigate();
   return (
     <>
       <main className="filter-container">
@@ -24,7 +27,31 @@ export const Filter = () => {
           <Select
             defaultValue="Men Single"
             onValueChange={(value) => {
-              setCategory(value);
+              switch (value) {
+                case "Men Single":
+                  setCategoryAbbre("MS");
+                  break;
+
+                case "Men Double":
+                  setCategoryAbbre("MD");
+                  setCategoryType(() => "Double");
+                  break;
+
+                case "Women Single":
+                  setCategoryAbbre("WS");
+                  break;
+
+                case "Women Double":
+                  setCategoryAbbre("WD");
+                  break;
+
+                case "Mixed Double":
+                  setCategoryAbbre("XD");
+                  break;
+
+                default:
+                  break;
+              }
             }}
           >
             <SelectTrigger className="w-[180px]">
@@ -41,11 +68,20 @@ export const Filter = () => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <Link state={category} to="/dashboard">
-            <Button className={"text-3xl"} variant={"ghost"}>
-              Go
-            </Button>
-          </Link>
+
+          <Button
+            className={"text-3xl"}
+            variant={"ghost"}
+            onClick={() => {
+              if (categoryAbbre == "MS") navigate("/dashboard/MS");
+              if (categoryAbbre == "WS") navigate("/dashboard/WS");
+              if (categoryAbbre == "MD") navigate("/dashboard/MD");
+              if (categoryAbbre == "WD") navigate("/dashboard/WD");
+              if (categoryAbbre == "XD") navigate("/dashboard/XD");
+            }}
+          >
+            Go
+          </Button>
         </div>
       </main>
     </>
