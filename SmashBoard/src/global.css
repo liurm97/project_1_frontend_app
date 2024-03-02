@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border m-0 p-0;
+  }
+  body {
+    @apply bg-black text-white box-border;
+  }
+}
+
+.header-container {
+  @apply p-8 border-b-2 border-solid;
+  @apply flex justify-around items-center;
+}
+
+.header-icons {
+  @apply flex space-x-2;
+}
+
+.header-links {
+  @apply flex justify-center items-center space-x-4;
+}
+
+.header-link {
+  @apply p-2 bg-white text-black rounded-lg hover:bg-red-500 hover:text-white transition ease-in-out delay-75;
+}
+
+.header-heading {
+  @apply flex items-end space-x-1;
+}
+
+.smash-icon-landing g {
+  @apply fill-red-500;
+}
+
+.smash-icon g {
+  @apply fill-blue-300;
+}
+
+.header-heading-h1 {
+  @apply text-2xl font-light;
+}
+
+.body-container {
+  @apply flex flex-col p-8 items-center space-y-4 mt-24;
+}
+
+.body-text {
+  @apply text-4xl;
+}
+
+.btn {
+  @apply text-2xl;
+}
+
+.destructive-btn {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-16 rounded-md px-32 bg-destructive text-destructive-foreground hover:bg-destructive/90 text-3xl;
+}
+
+.header-link.active {
+  @apply bg-red-500 transition-colors;
+}
+
+.header-heading.active {
+  @apply text-red-500;
+}
+
+/* ---------- Filter ----------- */
+
+.filter-container {
+  @apply min-h-screen;
+}
+
+.filter-wrapper {
+  @apply flex flex-col items-center gap-7 text-center pt-32;
+}
