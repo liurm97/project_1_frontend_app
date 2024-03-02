@@ -1,6 +1,7 @@
 import Icon from "@mdi/react";
 import { mdiGithub } from "@mdi/js";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import MainLogo from "../../assets/icon_white_bg.svg";
 
 export const MainHeader = () => {
   return (
@@ -10,7 +11,7 @@ export const MainHeader = () => {
         <NavLink to="/" className="header-heading">
           <img
             className="smash-icon-landing"
-            src={"src/assets/icon_white_bg.svg"}
+            src={MainLogo}
             alt="Badminton jump shot icon"
             aria-label="Badminton jump shot icon"
           />
