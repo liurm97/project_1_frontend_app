@@ -17,7 +17,7 @@ export type SinglesStatistics = {
 export const SinglesColumns: ColumnDef<SinglesStatistics>[] = [
   {
     accessorKey: "rank",
-    header: "Rank",
+    header: "Current Rank",
   },
   {
     accessorKey: "player",

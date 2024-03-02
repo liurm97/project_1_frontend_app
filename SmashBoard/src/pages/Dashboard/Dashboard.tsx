@@ -1,9 +1,8 @@
-// import { DashboardBody } from "./DashboardBody";
+"use client";
 import { DashboardHeader } from "./DashboardHeader";
 import { useLoaderData, useNavigate } from "react-router-dom";
-// import DashboardBody from "./DashboardBody";
-import { SinglesColumns, SinglesStatistics } from "./columns/SinglesColumns";
-import { DoublesColumns, DoublesStatistics } from "./columns/DoublesColumns";
+import { SinglesColumns } from "./columns/SinglesColumns";
+import { DoublesColumns } from "./columns/DoublesColumns";
 import { SinglesDataTable } from "./dataTable/SinglesDataTable";
 import { DoublesDataTable } from "./dataTable/DoublesDataTable";
 import { Button } from "@/components/ui/Button";
@@ -19,8 +18,23 @@ export const Dashboard = ({
   categoryColor,
   categoryType,
 }: DashboardArgument) => {
+  const data = useLoaderData();
   const navigate = useNavigate();
-  const data = useLoaderData() as SinglesStatistics[] | DoublesStatistics[];
+
+  // Option 1) implement loading using useEffect..
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(
+  //       "https://www.bwfshuttleapi.com/rankings/api/MS"
+  //     );
+  //     response.json().then((data) => {
+  //       setPlayerData([...data]);
+  //       setLoading(false);
+  //     });
+  //   };
+  //   fetchData();
+  // }, []);
+  // const data = useLoaderData();
   return (
     <>
       <div className={"max-w-7xl p-6 mx-auto my-0"}>
@@ -43,6 +57,7 @@ export const Dashboard = ({
           )}
         </div>
       </div>
+      )
     </>
   );
 };
